@@ -11,6 +11,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextClock
 import android.widget.TextView
+import android.widget.Toast
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
 import java.text.SimpleDateFormat
@@ -28,12 +29,18 @@ class MainActivity : AppCompatActivity() {
         card.visibility = View.GONE
 
         addAlarm.setOnClickListener {
-            TimePickerDialog(this, {tp, hour, minute -> setAlarmTime(hour, minute)}, 11,0,false).show()
+            TimePickerDialog(this, {tp, hour, minute -> setAlarmTime(hour, minute) }, Calendar.getInstance().get(Calendar.HOUR), Calendar.getInstance().get(Calendar.MINUTE), false).show()
+            card.visibility = View.VISIBLE
+        }
+
+        val cancelAlarm : MaterialButton = findViewById(R.id.cancel)
+        cancelAlarm.setOnClickListener {
+            stop()
+            card.visibility = View.GONE
         }
     }
 
     fun setAlarmTime(hour : Int, minute : Int){
-        //card.visibility = View.VISIBLE
         val alarmtime = Calendar.getInstance()
         val year = alarmtime.get(Calendar.YEAR)
         val month = alarmtime.get(Calendar.MONTH)
@@ -42,6 +49,7 @@ class MainActivity : AppCompatActivity() {
         val minute = alarmtime.get(Calendar.MINUTE)
         alarmtime.set(year, month, date, hour, minute, 0)
         setAlarm(alarmtime.timeInMillis, AlarmBroadcastReceiver.ALARMSTART)
+        Toast.makeText(this, "Time: hours:${hour}, minutes:${minute}," + "millis:${alarmtime.timeInMillis}", Toast.LENGTH_LONG).show()
     }
 
     fun stop() {
@@ -51,7 +59,7 @@ class MainActivity : AppCompatActivity() {
     fun setAlarm(militime : Long, action : String) {
         val intentalarm = Intent(applicationContext, AlarmBroadcastReceiver::class.java)
         intentalarm.putExtra(AlarmBroadcastReceiver.ALARMKEY, action)
-        val pendingintent = PendingIntent.getBroadcast(applicationContext, 4356, intentalarm, PendingIntent.FLAG_UPDATE_CURRENT)
+        val pendingintent = PendingIntent.getBroadcast(applicationContext, 4356, intentalarm, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
         val alarmmanager = getSystemService(ALARM_SERVICE) as AlarmManager
 
         if (action == AlarmBroadcastReceiver.ALARMSTART) {
