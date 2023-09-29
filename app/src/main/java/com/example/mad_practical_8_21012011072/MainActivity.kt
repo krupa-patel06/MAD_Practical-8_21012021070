@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val addAlarm : Button = findViewById(R.id.create)
+        val addAlarm : MaterialButton = findViewById(R.id.create)
         val card : MaterialCardView = findViewById(R.id.card2)
 
         card.visibility = View.GONE
@@ -45,9 +45,9 @@ class MainActivity : AppCompatActivity() {
         val year = alarmtime.get(Calendar.YEAR)
         val month = alarmtime.get(Calendar.MONTH)
         val date = alarmtime.get(Calendar.DATE)
-        val hour = alarmtime.get(Calendar.HOUR)
-        val minute = alarmtime.get(Calendar.MINUTE)
         alarmtime.set(year, month, date, hour, minute, 0)
+        val textAlarmTime : TextClock = findViewById(R.id.clocktime2)
+        textAlarmTime.text = SimpleDateFormat("hh:mm:ss a").format(alarmtime.time)
         setAlarm(alarmtime.timeInMillis, AlarmBroadcastReceiver.ALARMSTART)
         Toast.makeText(this, "Time: hours:${hour}, minutes:${minute}," + "millis:${alarmtime.timeInMillis}", Toast.LENGTH_LONG).show()
     }
