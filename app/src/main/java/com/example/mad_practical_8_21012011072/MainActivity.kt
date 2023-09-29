@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
         val textAlarmTime : TextClock = findViewById(R.id.clocktime2)
         textAlarmTime.text = SimpleDateFormat("hh:mm:ss a").format(alarmtime.time)
         setAlarm(alarmtime.timeInMillis, AlarmBroadcastReceiver.ALARMSTART)
-        Toast.makeText(this, "Time: hours:${hour}, minutes:${minute}," + "millis:${alarmtime.timeInMillis}", Toast.LENGTH_LONG).show()
+        Toast.makeText(this, "Alarm Set", Toast.LENGTH_LONG).show()
     }
 
     fun stop() {
