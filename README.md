@@ -1,4 +1,4 @@
-# MAD_Practical-8_21012011072
+# MAD_Practical-8_21012021070
 
 Aim:
 What is BroadcastReceiver? Difference between Service and BroadcastReceiver. Create an Alarm application by using service & BroadcastReceiver by following below instructions.
@@ -19,6 +19,6 @@ Apps can use services to do long-running processes in the background, such as do
 
 # Output 
 
-![image](https://github.com/Divy484/MAD_Practical-8_21012011072/assets/98522523/9ba54e8d-89bd-497b-913d-9185c4fd10f9)
-![image](https://github.com/Divy484/MAD_Practical-8_21012011072/assets/98522523/faf48b46-5bb1-483e-9776-338726edb895)
-![image](https://github.com/Divy484/MAD_Practical-8_21012011072/assets/98522523/4620be39-1d9b-483f-97d7-d54b08fc25bc)
+![image](https://github.com/Divy484/MAD_Practical-8_21012021070/assets/98522523/9ba54e8d-89bd-497b-913d-9185c4fd10f9)
+![image](https://github.com/Divy484/MAD_Practical-8_21012021070/assets/98522523/faf48b46-5bb1-483e-9776-338726edb895)
+![image](https://github.com/Divy484/MAD_Practical-8_21012021070/assets/98522523/4620be39-1d9b-483f-97d7-d54b08fc25bc)
